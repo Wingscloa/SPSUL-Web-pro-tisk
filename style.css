@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+.logo {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #222;
+    background: linear-gradient(90deg, #00c6fb 0%, #005bea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* text-fill-color: transparent; */
+    animation: fadeIn 1.2s cubic-bezier(.77,0,.175,1) both;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
