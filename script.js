@@ -13,4 +13,6 @@ async function loadComponent(targetSelector, url) {
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('#navbar', '/components/navbar.html');
     loadComponent('#footer', '/components/footer.html');
+    const aboutHost = document.querySelector('#about');
+    if (aboutHost) loadComponent('#about', '/components/about.html');
 });
