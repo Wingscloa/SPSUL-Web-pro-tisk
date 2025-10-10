@@ -1,0 +1,35 @@
+.about { padding: 20px; }
+.about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; align-items: center; }
+.about-media { overflow: hidden; border-radius: 12px; }
+.about-image { width: 100%; height: auto; display: block; }
+.about-content { color: #111; }
+.about-title { font-size: 36px; line-height: 1.15; margin: 0 0 14px; font-weight: 800; }
+.about-badges { display: flex; gap: 10px; margin: 10px 0 14px; flex-wrap: wrap; }
+.about-badge { padding: 6px 12px; border: 1px solid rgba(0,0,0,0.2); border-radius: 999px; font-weight: 600; font-size: 14px; background: #fff; }
+.about-text { font-size: 16px; line-height: 1.7; margin: 10px 0 16px; }
+.about-curve { display: block; width: 220px; margin: 16px 0 0 28px; opacity: 0.85; }
+
+@media (max-width: 900px) {
+  .about-inner { grid-template-columns: 1fr; gap: 24px; }
+  .about-title { font-size: 30px; }
+  .about-curve { margin-left: 0; width: 180px; }
+}
+
+@media (max-width: 768px) {
+  .about { padding: 16px; }
+  .about-inner { gap: 20px; }
+  .about-title { font-size: 26px; margin-bottom: 12px; }
+  .about-text { font-size: 15px; }
+  .about-badges { gap: 8px; margin: 8px 0 12px; }
+  .about-badge { padding: 5px 10px; font-size: 13px; }
+  .about-curve { width: 160px; margin-top: 12px; }
+}
+
+@media (max-width: 480px) {
+  .about { padding: 12px; }
+  .about-title { font-size: 22px; line-height: 1.2; }
+  .about-text { font-size: 14px; line-height: 1.6; }
+  .about-badges { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .about-badge { font-size: 12px; padding: 4px 8px; }
+  .about-curve { width: 140px; margin-top: 8px; }
+}

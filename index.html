@@ -6,9 +6,12 @@
     <title>Custom T-Shirt Printing Hero</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./pages/pages.css">
 </head>
 <body>
-
+    <div class="page-shell">
+        <div id="navbar"></div>
+    </div>
     <header class="hero-section">
         <video autoplay muted playsinline class="background-video">
             <source src="trickovideohero.mp4" type="video/mp4">
@@ -26,7 +29,6 @@
             </a>
         </div>
     </header>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Počká 1000 milisekund (1 sekundu)
@@ -37,6 +39,11 @@
             }, 1000); 
         });
     </script>
-
+    <main class="page-content">
+        <div id="about"></div>
+    </main>
+    <div id="footer"></div>
+    <script src="script.js"></script>
 </body>
+    
 </html>
