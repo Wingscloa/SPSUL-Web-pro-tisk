@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T-Shark</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <title>Custom T-Shirt Printing Hero</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="logo">T-Shark
-        TEST
-    </div>
-    <script src="script.js"></script>
+
+    <header class="hero-section">
+        <video autoplay muted playsinline class="background-video">
+            <source src="trickovideohero.mp4" type="video/mp4">
+            Your hgvhvh does not support the video tag.
+        </video>
+
+        <div class="video-overlay"></div>
+
+        <div class="hero-content content-hidden"> 
+            <h1 class="hero-title">
+                Potisk triček<br>na honzu
+            </h1>
+            <a href="#order" class="btn-primary">
+                OBJEDNAT &rarr;
+            </a>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Počká 1000 milisekund (1 sekundu)
+            setTimeout(() => {
+                const content = document.querySelector('.hero-content');
+                // Odstraní třídu 'content-hidden', čímž spustí CSS animaci
+                content.classList.remove('content-hidden'); 
+            }, 1000); 
+        });
+    </script>
+
 </body>
 </html>
