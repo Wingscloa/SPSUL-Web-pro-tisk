@@ -1,0 +1,15 @@
+.forwho { padding: 16px 20px 56px; }
+.forwho-inner { max-width: 1100px; margin: 0 auto; }
+.forwho-title { text-align: center; font-size: 28px; font-weight: 800; margin: 0 0 22px; }
+.forwho-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.forwho-card { background: #fff; border-radius: 22px; padding: 22px 18px; text-align: center; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 10px 24px rgba(0, 78, 132, 0.08); }
+.forwho-name { margin: 0 0 8px; font-size: 20px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; }
+.forwho-name .num { background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; font-weight: 800; }
+.forwho-desc { margin: 0; font-size: 16px; line-height: 1.6; color: #24313b; }
+
+@media (max-width: 900px) {
+  .forwho-grid { grid-template-columns: 1fr; }
+  .forwho-card { padding: 18px 16px; }
+}
+
+
