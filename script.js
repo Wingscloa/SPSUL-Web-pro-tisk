@@ -13,43 +13,10 @@ async function loadComponent(targetSelector, url) {
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('#navbar', '/components/navbar.html');
     loadComponent('#footer', '/components/footer.html');
-    const heroHost = document.querySelector('#hero');
-    if (heroHost) {
-        loadComponent('#hero', '/components/hero.html').then(() => {
-            // After hero HTML is injected, wire reveal logic reliably
-            const root = heroHost;
-            const content = root.querySelector('.hero-component .hero__content');
-            const video = root.querySelector('.hero-component .hero__bg-video');
-            if (!content || !video) return;
-            let revealed = false;
-            const reveal = () => {
-                if (revealed) return;
-                revealed = true;
-                content.classList.remove('content-hidden');
-                content.style.opacity = '1';
-                content.style.transform = 'translate(-50%, -50%)';
-            };
-            video.addEventListener('ended', reveal, { once: true });
-            const onTimeUpdate = () => {
-                const d = video.duration;
-                if (!isFinite(d) || d <= 0) return;
-                // reveal ~1.2s před koncem
-                if (video.currentTime >= d - 1.5) reveal();
-            };
-            video.addEventListener('timeupdate', onTimeUpdate);
-            const setDurationFallback = () => {
-                if (!isFinite(video.duration) || video.duration <= 0) return;
-                // fallback: také ~1.2s před koncem
-                const ms = Math.max(0, Math.ceil((video.duration - 1.2) * 1000));
-                setTimeout(reveal, ms);
-            };
-            if (video.readyState >= 1) setDurationFallback();
-            else video.addEventListener('loadedmetadata', setDurationFallback, { once: true });
-        });
-    }
-    // const aboutHost = document.querySelector('#about');
-    // if (aboutHost) loadComponent('#about', '/components/about.html');
-
+    loadComponent('#herosection', '/components/herosection.html');
+    loadComponent('#herosection', '/components/herosection.html');
+    loadComponent("#about", '/components/about.html')
+    loadComponent("#kontakty", '/components/kontakty.html')
     const faqHost = document.querySelector('#faq');
     if (faqHost) {
         loadComponent('#faq', '/components/faq.html').then(() => {

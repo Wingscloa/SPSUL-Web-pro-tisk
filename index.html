@@ -5,64 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T-Shark</title>
+    <link rel="icon" type="image/x-icon" href="/favicon/icon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/pages/pages.css">
     <link rel="stylesheet" href="/components/navbar.css">
     <link rel="stylesheet" href="/components/footer.css">
-    <link rel="stylesheet" href ="/components/kontakty.css">
-        <style>
-        /* Hero (header) — centered, responsive. Uses site's main font from style.css */
-        .hero-section{display:flex;align-items:center;justify-content:center;gap:40px;background:#ffffff;color:#111}
-        .hero-content{max-width:640px}
-        .hero-title{font-family: 'Avenir Next LT Pro', cursive; font-size:clamp(28px,4vw,44px);line-height:1.05;margin:0 0 14px;font-weight:700;color:#111}
-        .hero-accent{color:var(--color-prim-dark, #007bff);display:inline-block}
-        .hero-sub{font-size:clamp(15px,2.2vw,18px);color:#666;line-height:1.6;margin:0 0 20px;margin-top:16px}
-                .hero-ctas{display:flex;gap:0;margin-top:32px}
-                .hero-ctas a{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700;min-height:20px;margin-left:0}
-                /* desktop: add left margin between CTAs */
-                @media (min-width:1101px){
-                    .hero-ctas a + a{margin-left:12px}
-                }
-        .btn-primary{background:linear-gradient(90deg,var(--color-prim-dark,#007bff) 0%,var(--color-prim-light,#8CBDDD)100%);color:#fff}
-        .btn-outline{border:2px solid var(--color-prim-dark,#007bff);color:var(--color-prim-dark,#007bff);background:transparent}
-        .hero-figure img{max-width:420px;width:100%;height:auto;display:block}
-        .hero-figure:hover{transform:scale(1.55);transition:transform .3s ease}
-        .hero-figure{transform:scale(1.5);transition:transform .3s ease;cursor: pointer;}
-        /* rotating word animation */
-        .rotating-word{display:inline-block;opacity:1;transform:none;transition:opacity .35s ease,transform .35s ease}
-        .rotating-word.hidden{opacity:0;transform:translateY(-6px)} 
-
-        @media (max-width:1100px){
-            .hero-section{flex-direction:column;text-align:center;padding:40px 16px}
-            .hero-content{max-width:720px}
-            .hero-figure{display:none}
-            .hero-title{font-size:clamp(24px,6vw,36px)}
-            /* make hero CTAs full-width on mobile */
-            .hero-ctas{flex-direction:column;align-items:stretch;gap:12px}
-            .hero-ctas a{width:100%;box-sizing:border-box;margin-left:0;margin-top: 10px;}
-        }
-        </style>
+    <link rel="stylesheet" href="/components/herosection.css">
+    <link rel="stylesheet" href="/components/kontakty.css">
 </head>
 
 <body>
     <div class="sticky-nav-host"><div id="navbar"></div></div>
-        <div id="header" style="margin-top: 64px;">
-            <section class="hero-section">
-                <div class="hero-content">
-                    <h1 class="hero-title">POJĎ SE S NÁMI ZAKOUSNOUT DO TISKU<br><span class="hero-accent"><span style="font-size: 24px;">PRO</span> <span id="rotating-word" class="rotating-word">STUDENTY</span></span></h1>
-                    <p class="hero-sub">Chceš se stát frajerem, který bude vlastnit všechny <b>Tung Tung Sahur Chickens</b>? Pojď se podívat do našeho lesíka, kde budou všechny goofy <b>"MÝMS"</b>, který znáš z TikToku a Reelsu.</p>
-                    <div class="hero-ctas">
-                        <a class="btn-primary" href="#">KOUPIT</a>
-                        <a class="btn-outline" href="#">O NÁS</a>
-                    </div>
-                </div>
-                <figure class="hero-figure" aria-hidden="true">
-                    <img src="/Shirt.png" alt="Tričko s kreslenými postavičkami">
-                </figure>
-            </section>
-        </div>
+    <div id="herosection"></div>
     <main class="page-content">
+        <hr class="section-divider">
+        <div id="about"></div>
         <hr class="section-divider">
         <div id="prokoho"></div>
         <hr class="section-divider">
@@ -73,7 +31,6 @@
         <div id="faq"></div>
         <div id ="kontakty"></div>
     </main>
-    <hr class="section-divider">
     <div id="footer"></div>
     <script src="script.js"></script>
 </body>

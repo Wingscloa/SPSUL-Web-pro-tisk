@@ -1,0 +1,30 @@
+/* Hero (header) — centered, responsive. Uses site's main font from style.css */
+        .hero-section{display:flex;align-items:center;justify-content:center;gap:40px;background:#ffffff;color:#111}
+        .hero-content{max-width:640px}
+        .hero-title{font-family: 'Avenir Next LT Pro', cursive; font-size:clamp(28px,4vw,44px);line-height:1.05;margin:0 0 14px;font-weight:700;color:#111}
+        .hero-accent{color:var(--color-prim-dark, #007bff);display:inline-block}
+        .hero-sub{font-size:clamp(15px,2.2vw,18px);color:#666;line-height:1.6;margin:0 0 20px;margin-top:16px}
+                .hero-ctas{display:flex;gap:0;margin-top:32px}
+                .hero-ctas a{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700;min-height:20px;margin-left:0}
+                /* desktop: add left margin between CTAs */
+                @media (min-width:1101px){
+                    .hero-ctas a + a{margin-left:12px}
+                }
+        .btn-primary{background:linear-gradient(90deg,var(--color-prim-dark,#007bff) 0%,var(--color-prim-light,#8CBDDD)100%);color:#fff}
+        .btn-outline{border:2px solid var(--color-prim-dark,#007bff);color:var(--color-prim-dark,#007bff);background:transparent}
+        .hero-figure img{max-width:420px;width:100%;height:auto;display:block}
+        .hero-figure:hover{transform:scale(1.55);transition:transform .3s ease}
+        .hero-figure{transform:scale(1.5);transition:transform .3s ease;cursor: pointer;}
+        /* rotating word animation */
+        .rotating-word{display:inline-block;opacity:1;transform:none;transition:opacity .35s ease,transform .35s ease}
+        .rotating-word.hidden{opacity:0;transform:translateY(-6px)} 
+
+        @media (max-width:1100px){
+            .hero-section{flex-direction:column;text-align:center;padding:40px 16px}
+            .hero-content{max-width:720px}
+            .hero-figure{display:none}
+            .hero-title{font-size:clamp(24px,6vw,36px)}
+            /* make hero CTAs full-width on mobile */
+            .hero-ctas{flex-direction:column;align-items:stretch;gap:12px}
+            .hero-ctas a{width:100%;box-sizing:border-box;margin-left:0;margin-top: 10px;}
+        }
