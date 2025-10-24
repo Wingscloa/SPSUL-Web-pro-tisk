@@ -11,12 +11,6 @@ async function loadComponent(targetSelector, url) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-<<<<<<< HEAD
-    loadComponent('#navbar', './components/navbar.html');
-    loadComponent('#footer', './components/footer.html');
-    const aboutHost = document.querySelector('#about');
-    if (aboutHost) loadComponent('#about', './components/about.html');
-=======
     loadComponent('#navbar', '/components/navbar.html');
     loadComponent('#footer', '/components/footer.html');
     const heroHost = document.querySelector('#hero');
@@ -53,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             else video.addEventListener('loadedmetadata', setDurationFallback, { once: true });
         });
     }
-    const aboutHost = document.querySelector('#about');
-    if (aboutHost) loadComponent('#about', '/components/about.html');
+    // const aboutHost = document.querySelector('#about');
+    // if (aboutHost) loadComponent('#about', '/components/about.html');
 
     const faqHost = document.querySelector('#faq');
     if (faqHost) {
@@ -187,5 +181,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     observeNavbar.observe(document.getElementById('navbar'), { childList: true, subtree: true });
->>>>>>> testing
+
+    // Rotating words in hero: change every 1s with fade animation
+    (function wireHeroRotator(){
+        const el = document.getElementById('rotating-word');
+        if (!el) return;
+        const words = [
+            'SIGMY',
+            'TRU TUNG TUNG SAHUR',
+            'MEGA KNIGHT',
+            'Poulicni Frajeris',
+        ];
+        let i = 0;
+        // ensure initial text
+        el.textContent = words[0];
+        let busy = false;
+        setInterval(() => {
+            if (busy) return; busy = true;
+            // fade out
+            el.classList.add('hidden');
+            setTimeout(() => {
+                i = (i + 1) % words.length;
+                el.textContent = words[i];
+                // fade in
+                el.classList.remove('hidden');
+                // small delay to allow the transition to finish before next cycle
+                setTimeout(() => { busy = false; }, 1000);
+            }, 1000);
+        }, 1000);
+    })();
 });
