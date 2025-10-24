@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - T-Shark</title>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/pages/pages.css">
+    <link rel="stylesheet" href="/components/navbar.css">
+    <link rel="stylesheet" href="/components/footer.css">
+    <link rel="stylesheet" href="/pages/blog.css?v=3">
+</head>
+
+<body>
+    <div class="sticky-nav-host"><div id="navbar"></div></div>
+    
+    <main class="page-content">
+        <div class="blog-page">
+            <div class="blog-page-header">
+                <h1 class="blog-page-title">Blog</h1>
+                <p class="blog-page-subtitle">Tipy, triky a inspirace pro vaše trička a potisky</p>
+            </div>
+
+            <div class="blog-filters">
+                <button class="filter-btn active" data-category="all">Všechny</button>
+                <button class="filter-btn" data-category="tipy">Tipy</button>
+                <button class="filter-btn" data-category="trendy">Trendy</button>
+                <button class="filter-btn" data-category="pece">Péče</button>
+                <button class="filter-btn" data-category="novinky">Novinky</button>
+            </div>
+
+            <div class="blog-list" id="blog-list">
+                <!-- Blog items will be dynamically generated -->
+            </div>
+
+            <div class="blog-pagination">
+                <button class="pagination-btn prev" disabled>Předchozí</button>
+                <div class="pagination-numbers">
+                    <button class="pagination-number active">1</button>
+                    <button class="pagination-number">2</button>
+                    <button class="pagination-number">3</button>
+                </div>
+                <button class="pagination-btn next">Další</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <script src="/script.js"></script>
+    <script src="/pages/blog-data.js"></script>
+    <script src="/pages/blog.js"></script>
+</body>
+
+</html>

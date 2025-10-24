@@ -10,6 +10,110 @@ async function loadComponent(targetSelector, url) {
     }
 }
 
+// Load blog component with dynamic data
+async function loadBlogComponent() {
+    try {
+        // Load blog data
+        const dataResponse = await fetch('/pages/blog-data.js', { cache: 'no-store' });
+        const dataText = await dataResponse.text();
+        
+        // Execute the data script to get blogArticles
+        const script = document.createElement('script');
+        script.textContent = dataText;
+        document.head.appendChild(script);
+        
+        // Get the blog articles from the executed script
+        const blogArticles = window.blogArticles || [];
+        
+        // Generate blog HTML with dynamic data
+        const blogHTML = generateBlogHTML(blogArticles);
+        
+        // Insert into the blog host
+        const blogHost = document.querySelector('#blog');
+        if (blogHost) {
+            blogHost.innerHTML = blogHTML;
+        }
+        
+        // Clean up the temporary script
+        document.head.removeChild(script);
+        
+    } catch (err) {
+        console.error('Blog component load failed:', err);
+        // Fallback to static component
+        loadComponent('#blog', '/components/blog.html');
+    }
+}
+
+// Generate blog HTML from data
+function generateBlogHTML(articles) {
+    const featuredArticles = articles.filter(article => article.featured);
+    const regularArticles = articles.filter(article => !article.featured).slice(0, 2);
+    
+    return `
+        <link rel="stylesheet" href="/components/blog.css">
+        <section class="blog" id="blog-section">
+            <div class="blog-inner">
+                <div class="blog-header">
+                    <h2 class="blog-title">Nejnovější články</h2>
+                    <p class="blog-subtitle">Objevte tipy, triky a inspirace pro vaše trička a potisky</p>
+                </div>
+                
+                <div class="blog-grid">
+                    ${featuredArticles.map(article => `
+                        <article class="blog-card featured">
+                            <div class="blog-card-image">
+                                <img src="${article.image}" alt="${article.title}" />
+                                <div class="blog-card-badge">Doporučeno</div>
+                            </div>
+                            <div class="blog-card-content">
+                                <div class="blog-card-meta">
+                                    <span class="blog-card-date">${article.date}</span>
+                                    <span class="blog-card-category">${getCategoryName(article.category)}</span>
+                                </div>
+                                <h3 class="blog-card-title">${article.title}</h3>
+                                <p class="blog-card-excerpt">${article.subtitle}</p>
+                                <a href="/pages/blog.html#${article.id}" class="blog-card-link">Číst více</a>
+                            </div>
+                        </article>
+                    `).join('')}
+                    
+                    ${regularArticles.map(article => `
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="${article.image}" alt="${article.title}" />
+                            </div>
+                            <div class="blog-card-content">
+                                <div class="blog-card-meta">
+                                    <span class="blog-card-date">${article.date}</span>
+                                    <span class="blog-card-category">${getCategoryName(article.category)}</span>
+                                </div>
+                                <h3 class="blog-card-title">${article.title}</h3>
+                                <p class="blog-card-excerpt">${article.subtitle}</p>
+                                <a href="/pages/blog.html#${article.id}" class="blog-card-link">Číst více</a>
+                            </div>
+                        </article>
+                    `).join('')}
+                </div>
+
+                <div class="blog-actions">
+                    <a href="/pages/blog.html" class="blog-view-all">Zobrazit všechny články</a>
+                </div>
+            </div>
+        </section>
+    `;
+}
+
+// Helper function to get category name
+function getCategoryName(category) {
+    const categoryNames = {
+        'tipy': 'Tipy',
+        'trendy': 'Trendy',
+        'pece': 'Péče',
+        'novinky': 'Novinky'
+    };
+    return categoryNames[category] || category;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('#navbar', '/components/navbar.html');
     loadComponent('#footer', '/components/footer.html');
@@ -151,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const blogHost = document.querySelector('#blog');
     if (blogHost) {
-        loadComponent('#blog', '/components/blog.html');
+        loadBlogComponent();
     }
 
     // After navbar mounts, delegate to initialize hamburger toggle
