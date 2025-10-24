@@ -76,13 +76,14 @@ body {
 /* --- Levý sloupec: Formulář --- */
 .contact-form-wrapper {
     background: linear-gradient(135deg, var(--prim-dark) 0%, var(--prim-light) 100%);
-    padding: 40px;
+    padding: 80px;
     color: var(--white);
     /* Tento 'border-radius' vytváří organický "blob" tvar */
     border-radius: 45% 55% 62% 38% / 51% 41% 59% 49%;
     box-shadow: 0 16px 40px rgba(0, 78, 132, 0.25);
     transition: border-radius 0.3s ease;
 }
+
 
 /* Malá animace "blobu" při najetí */
 .contact-form-wrapper:hover {
@@ -267,6 +268,7 @@ body {
     .social-links {
         justify-content: center;
     }
+    
 }
 
 @media (max-width: 600px) {
@@ -284,5 +286,6 @@ body {
         padding: 30px 25px;
         /* Zrušíme horizontální posun "blobu" */
         margin: 0 -20px; 
+        
     }
 }
