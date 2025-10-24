@@ -1,0 +1,288 @@
+/* --- Základní nastavení a proměnné --- */
+:root {
+    --bg-dark: #09131C;
+    --sec-dark: #053151;
+    --prim-dark: #004E84;
+    --prim-light: #8CBDDD;
+    --sec-light: #B2CBDB;
+    --bg-light: #F4F2EB; /* Toto je z palety, ale pozadí bude bílé */
+    --white: #FFFFFF;
+    --text-dark: #222;
+    --text-light: #555;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- Hlavní kontejner sekce --- */
+.contact-section {
+    padding: 60px 20px;
+    overflow: hidden; /* Důležité pro oříznutí "blobu" na mobilech */
+}
+
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Záhlaví sekce --- */
+.contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--sec-dark);
+    margin: 0 0 10px 0;
+    position: relative;
+    display: inline-block;
+}
+
+/* Ozdobná čára pod nadpisem */
+.contact-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--prim-dark), var(--prim-light));
+    border-radius: 2px;
+}
+
+.contact-header p {
+    font-size: 16px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Hlavní layout (mřížka) --- */
+.contact-main {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Levý sloupec je o něco širší */
+    align-items: center;
+    gap: 40px;
+}
+
+/* --- Levý sloupec: Formulář --- */
+.contact-form-wrapper {
+    background: linear-gradient(135deg, var(--prim-dark) 0%, var(--prim-light) 100%);
+    padding: 40px;
+    color: var(--white);
+    /* Tento 'border-radius' vytváří organický "blob" tvar */
+    border-radius: 45% 55% 62% 38% / 51% 41% 59% 49%;
+    box-shadow: 0 16px 40px rgba(0, 78, 132, 0.25);
+    transition: border-radius 0.3s ease;
+}
+
+/* Malá animace "blobu" při najetí */
+.contact-form-wrapper:hover {
+    border-radius: 51% 41% 59% 49% / 45% 55% 62% 38%;
+}
+
+.contact-form-wrapper h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 25px 0;
+    text-align: left;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--sec-light);
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    box-sizing: border-box; /* Důležité pro správný padding */
+}
+
+.contact-form select {
+    color: var(--text-light); /* Výchozí barva pro placeholder */
+}
+
+.contact-form select:valid {
+    color: var(--text-dark); /* Barva po výběru */
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form ::placeholder {
+    color: #999;
+}
+
+/* Pro skrytí labelů, ale zachování přístupnosti */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* CTA Tlačítko (podobné jako v T-Shark) */
+.cta-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    /* Gradient z vaší palety */
+    background: linear-gradient(90deg, var(--prim-dark) 0%, var(--sec-dark) 100%);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 14px rgba(0, 78, 132, 0.25);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 18px rgba(0, 78, 132, 0.3);
+}
+
+/* --- Pravý sloupec: Detaily --- */
+.contact-details {
+    padding-left: 20px;
+}
+
+.contact-details h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--sec-dark);
+    margin: 0 0 10px 0;
+}
+
+.contact-details p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin: 0 0 30px 0;
+}
+
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 16px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.contact-info-list .icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--prim-dark);
+    margin-top: 2px;
+}
+
+/* Sociální sítě */
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--sec-light);
+    border-radius: 50%;
+    color: var(--prim-dark);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.social-links a svg {
+    width: 20px;
+    height: 20px;
+}
+
+.social-links a:hover {
+    background-color: var(--prim-dark);
+    border-color: var(--prim-dark);
+    color: var(--white);
+}
+
+/* --- Responzivita --- */
+
+@media (max-width: 900px) {
+    .contact-main {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .contact-details {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .contact-info-list {
+        align-items: center;
+    }
+    
+    .contact-info-list li {
+        justify-content: center;
+        text-align: left;
+        max-width: 350px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-header h2 {
+        font-size: 28px;
+    }
+    
+    .contact-header p {
+        font-size: 15px;
+    }
+
+    .contact-form-wrapper {
+        /* Mírné zjednodušení "blobu" na mobilu */
+        border-radius: 30px;
+        padding: 30px 25px;
+        /* Zrušíme horizontální posun "blobu" */
+        margin: 0 -20px; 
+    }
+}
