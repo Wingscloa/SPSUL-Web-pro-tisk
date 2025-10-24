@@ -1,0 +1,28 @@
+.faq { padding: 24px 20px 40px; }
+.faq-inner { max-width: 1100px; margin: 0 auto; }
+.faq-title { font-size: 28px; font-weight: 800; margin: 0 0 18px; }
+
+/* layout with vertical side labels */
+.faq-layout { display: grid; grid-template-columns: 60px 1fr 60px; align-items: stretch; gap: 24px; }
+.faq-side { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 0; padding: 6px 0; }
+.faq-letter { font-family: "Carter One", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; font-size: 64px; line-height: 1; font-weight: 800; background: linear-gradient(180deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+
+.faq-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 26px; }
+.faq-item { background: #fff; border-radius: 14px; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 10px 24px rgba(0, 78, 132, 0.08); overflow: hidden; }
+.faq-q { width: 100%; text-align: left; background: transparent; border: 0; padding: 18px 20px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; font-size: 18px; cursor: pointer; color: #0b2132; font-weight: 700; }
+.faq-q:hover { background: rgba(0,0,0,0.02); }
+.faq-q:focus-visible { outline: 0; box-shadow: inset 0 0 0 2px var(--color-prim-light); border-radius: 12px; }
+.faq-q .num { font-weight: 800; font-size: 16px; background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; margin-right: 4px; }
+.faq-q .chev { width: 14px; height: 14px; border-right: 2px solid var(--color-prim-dark); border-bottom: 2px solid var(--color-prim-dark); transform: rotate(-45deg); transition: transform .24s ease; opacity: .85; }
+.faq-item.open .faq-q .chev { transform: rotate(45deg); }
+.faq-item.open .faq-q { border-bottom: 1px solid rgba(0,0,0,0.06); }
+.faq-a { padding: 0 20px; color: #24313b; line-height: 1.65; background: #fff; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; }
+.faq-item.open .faq-a { padding: 12px 20px 18px; }
+
+@media (max-width: 700px) {
+  .faq-title { font-size: 24px; }
+  .faq-layout { grid-template-columns: 1fr; }
+  .faq-side { display: none; }
+}
+
+

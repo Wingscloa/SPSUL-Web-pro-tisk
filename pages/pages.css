@@ -1,0 +1,16 @@
+.page-shell { background: #ffffff; margin: 16px; padding: 10px 14px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0, 78, 132, 0.14), 0 2px 4px rgba(0, 78, 132, 0.10); }
+.page-content { max-width: 1100px; margin: 0 auto; padding: 24px 20px 40px; }
+.prose { color: #111; }
+.prose h1 { margin: 10px 0 16px; font-size: 36px; line-height: 1.2; font-weight: 700; }
+.prose h2 { margin: 28px 0 12px; font-size: 24px; line-height: 1.35; font-weight: 700; }
+.prose p { margin: 10px 0 12px; font-size: 18px; line-height: 1.7; }
+.prose ul { margin: 8px 0 16px 1.2em; padding: 0; }
+.prose li { margin: 6px 0; font-size: 17px; line-height: 1.6; }
+.prose a { color: var(--color-prim-dark); text-decoration: none; }
+.prose a:hover { text-decoration: underline; }
+<<<<<<< HEAD
+.prose .callout { background: var(--color-bg-light); border: 1px solid var(--color-sec-light); border-radius: 12px; padding: 14px 16px; }
+=======
+.prose .callout { background: var(--color-bg-light); border: 1px solid var(--color-sec-light); border-radius: 12px; padding: 14px 16px; }
+
+>>>>>>> testing
