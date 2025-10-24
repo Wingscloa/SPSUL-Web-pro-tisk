@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* GLOBAL RESETS & TYPOGRAPHY */
 * {
     margin: 0;
@@ -105,6 +106,8 @@ body {
     background-color: #1565c0;
 }
 
+=======
+>>>>>>> testing
 :root {
     /* Color system */
     --color-bg-dark: #09131C;   /* BG - DARK */
@@ -211,6 +214,177 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 24px 20px 40px;
+<<<<<<< HEAD
+=======
+}
+
+/* Nice readable typography block */
+.prose { color: #111; }
+.prose h1 {
+    margin: 10px 0 16px;
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+.prose h2 {
+    margin: 28px 0 12px;
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+.prose p { margin: 10px 0 12px; font-size: 18px; line-height: 1.7; }
+.prose ul { margin: 8px 0 16px 1.2em; padding: 0; }
+.prose li { margin: 6px 0; font-size: 17px; line-height: 1.6; }
+.prose a { color: var(--color-prim-dark); text-decoration: none; }
+.prose a:hover { text-decoration: underline; }
+.prose .callout {
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-sec-light);
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #111;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 2px 0;
+    transition: color .2s ease;
+}
+
+/* underline indicator (active/hover) */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
+    opacity: 0;
+    transform: scaleX(0.6);
+    transition: opacity .2s ease, transform .2s ease;
+    border-radius: 2px;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.nav-links a:hover {
+    color: var(--color-prim-dark);
+}
+
+.login {
+    margin-left: 18px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 700;
+    font-size: 18px;
+    transition: color .2s ease;
+}
+
+/* Actions on the right */
+.actions { display: flex; align-items: center; gap: 12px; }
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #fff;
+    color: var(--color-prim-dark);
+    cursor: pointer;
+    transition: background .2s ease, box-shadow .2s ease;
+}
+.icon-btn:hover {
+    background: var(--color-bg-light);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.cta {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
+    box-shadow: 0 6px 14px rgba(0, 78, 132, 0.25);
+    transition: transform .12s ease, box-shadow .2s ease;
+}
+.cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(0, 78, 132, 0.3);
+}
+
+/* Arrow icon inside CTA */
+.cta .cta-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    vertical-align: -2px;
+}
+
+/* Footer */
+.site-footer { padding: 18px 20px 24px; }
+.footer-rule { border: none; height: 1px; background: rgba(0,0,0,0.08); margin: 0 20px 16px; }
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.site-footer { margin-top: auto; }
+#footer { margin-top: auto; }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: #111; text-decoration: none; font-weight: 500; }
+.footer-links a:hover { color: var(--color-prim-dark); }
+.footer-social { display: flex; gap: 12px; }
+.social-btn { text-decoration: none; color: #111; }
+.social-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.25);
+}
+
+/* Global responsive tweaks */
+@media (max-width: 900px) {
+    .page-shell { margin: 12px; padding: 10px; }
+    .page-content { padding: 18px 16px 32px; }
+}
+
+@media (max-width: 760px) {
+    .site-header { padding: 10px 12px; }
+    .page-shell { margin: 10px; padding: 8px 10px; }
+}
+
+@media (max-width: 480px) {
+    .page-shell { margin: 8px; padding: 6px 8px; }
+    .page-content { padding: 16px 12px 28px; }
+>>>>>>> testing
 }
 
 /* Nice readable typography block */

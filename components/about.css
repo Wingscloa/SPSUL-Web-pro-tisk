@@ -10,6 +10,7 @@
 .about-curve { display: block; width: 220px; margin: 16px 0 0 28px; opacity: 0.85; }
 
 @media (max-width: 900px) {
+<<<<<<< HEAD
   .about-inner { grid-template-columns: 1fr; gap: 24px; }
   .about-title { font-size: 30px; }
   .about-curve { margin-left: 0; width: 180px; }
@@ -33,3 +34,10 @@
   .about-badge { font-size: 12px; padding: 4px 8px; }
   .about-curve { width: 140px; margin-top: 8px; }
 }
+=======
+  .about-inner { grid-template-columns: 1fr; }
+  .about-title { font-size: 30px; }
+  .about-curve { margin-left: 0; }
+}
+
+>>>>>>> testing

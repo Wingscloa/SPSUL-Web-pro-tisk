@@ -63,3 +63,7 @@ Tým Prezentace zajišťuje:
 - Rudolf Dařílek  
 
 ---
+
+## Assets
+- Place CTA arrow PNG at `assets/arrow-right.png` (16x16 or 20x20 recommended, white on transparent).
+- Paths in code assume root hosting; adjust if deploying under a subpath.

@@ -8,4 +8,9 @@
 .prose li { margin: 6px 0; font-size: 17px; line-height: 1.6; }
 .prose a { color: var(--color-prim-dark); text-decoration: none; }
 .prose a:hover { text-decoration: underline; }
+<<<<<<< HEAD
 .prose .callout { background: var(--color-bg-light); border: 1px solid var(--color-sec-light); border-radius: 12px; padding: 14px 16px; }
+=======
+.prose .callout { background: var(--color-bg-light); border: 1px solid var(--color-sec-light); border-radius: 12px; padding: 14px 16px; }
+
+>>>>>>> testing
