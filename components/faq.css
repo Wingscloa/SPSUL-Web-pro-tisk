@@ -1,11 +1,10 @@
 .faq { padding: 24px 20px 40px; }
 .faq-inner { max-width: 1100px; margin: 0 auto; }
-.faq-title { font-size: 28px; font-weight: 800; margin: 0 0 18px; }
 
-/* layout with vertical side labels */
-.faq-layout { display: grid; grid-template-columns: 60px 1fr 60px; align-items: stretch; gap: 24px; }
-.faq-side { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 0; padding: 6px 0; }
-.faq-letter { font-family: "Carter One", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; font-size: 64px; line-height: 1; font-weight: 800; background: linear-gradient(180deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.faq-header { text-align: center; margin: 0 auto 32px; max-width: 640px; display: grid; gap: 12px; }
+.faq-pill { display: inline-block; margin: 0 auto; padding: 6px 14px; border-radius: 999px; background: rgba(0, 78, 132, 0.1); color: var(--color-prim-dark); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+.faq-title { font-size: 30px; font-weight: 800; margin: 0; color: #0b2132; }
+.faq-intro { margin: 0; color: #4a5f6d; line-height: 1.6; font-size: 16px; }
 
 .faq-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 26px; }
 .faq-item { background: #fff; border-radius: 14px; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 10px 24px rgba(0, 78, 132, 0.08); overflow: hidden; }
@@ -21,8 +20,7 @@
 
 @media (max-width: 700px) {
   .faq-title { font-size: 24px; }
-  .faq-layout { grid-template-columns: 1fr; }
-  .faq-side { display: none; }
+  .faq-intro { font-size: 15px; }
 }
 
 
