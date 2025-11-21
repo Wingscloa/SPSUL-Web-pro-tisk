@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+})
 
     const forWhoHost = document.querySelector('#prokoho');
     if (forWhoHost) {
@@ -145,6 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const testimonialsHost = document.querySelector('#testimonials');
+    if (testimonialsHost) {
+        loadComponent('#testimonials', '/components/testimonials.html');
+    }
+
     const blogHost = document.querySelector('#blog');
     if (blogHost) {
         loadComponent('#blog', '/components/blog.html');
@@ -179,31 +185,32 @@ document.addEventListener('DOMContentLoaded', () => {
     observeNavbar.observe(document.getElementById('navbar'), { childList: true, subtree: true });
 
     // Rotating words in hero: change every 1s with fade animation
-    (function wireHeroRotator(){
-        const el = document.getElementById('rotating-word');
-        if (!el) return;
-        const words = [
-            'SIGMY',
-            'TRU TUNG TUNG SAHUR',
-            'MEGA KNIGHT',
-            'Poulicni Frajeris',
-        ];
-        let i = 0;
-        // ensure initial text
-        el.textContent = words[0];
-        let busy = false;
-        setInterval(() => {
-            if (busy) return; busy = true;
-            // fade out
-            el.classList.add('hidden');
-            setTimeout(() => {
-                i = (i + 1) % words.length;
-                el.textContent = words[i];
-                // fade in
-                el.classList.remove('hidden');
-                // small delay to allow the transition to finish before next cycle
-                setTimeout(() => { busy = false; }, 1000);
-            }, 1000);
-        }, 1000);
-    })();
-});
+
+function wireHeroRotator(){
+    const el = document.getElementById('rotating-word');
+    if (!el) return;
+    const words = [
+        'STUDENTY',
+        'SPORTOVCE',
+        'FIRMY',
+        'KAŽDÉHO',
+    ];
+    let i = 0;
+    // ensure initial text
+    el.textContent = words[0];
+    
+    setInterval(() => {
+        // fade out
+        el.classList.add('hidden');
+        setTimeout(() => {
+            i = (i + 1) % words.length;
+            el.textContent = words[i];
+            // fade in
+            el.classList.remove('hidden');
+        }, 600); // Match CSS transition duration
+    }, 3000); // Change word every 3 seconds
+}
+
+window.addEventListener("load", function(){
+    const myTimeout = setTimeout(wireHeroRotator,500)
+})
