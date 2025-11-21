@@ -1,12 +1,39 @@
 .site-footer { padding: 18px 20px 24px; margin-top: auto; }
 .footer-rule { border: none; height: 1px; background: rgba(0,0,0,0.08); margin: 0 20px 16px; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .footer-links { display: flex; gap: 28px; }
 .footer-links a { color: #111; text-decoration: none; font-weight: 500; }
 .footer-links a:hover { color: var(--color-prim-dark); }
 .footer-social { display: flex; gap: 12px; }
 .social-btn { text-decoration: none; color: #111; }
 .social-circle { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.25); }
+
+.footer-company {
+    margin-top: 8px;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 6px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    background-color: rgba(0,0,0,0.02);
+}
+
+.company-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 2px 0;
+}
+
+.company-label {
+    font-weight: 600;
+}
+
+.company-value {
+    flex: 1 1 auto;
+}
 
 /* Responsive footer */
 @media (max-width: 900px) {
@@ -18,6 +45,7 @@
     .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
     .footer-links { flex-wrap: wrap; gap: 12px 18px; }
     .footer-social { margin-top: 4px; }
+    .footer-company { width: 100%; }
 }
 
 @media (max-width: 420px) {
