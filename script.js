@@ -214,3 +214,12 @@ function wireHeroRotator(){
 window.addEventListener("load", function(){
     const myTimeout = setTimeout(wireHeroRotator,500)
 })
+
+function scrollToAnchor(name, offset) {
+    var element = document.getElementById(name);
+    var headerOffset = offset;
+    var elementPosition = element.getBoundingClientRect().top;
+    var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    console.log(offsetPosition)
+    window.scrollTo({top: offsetPosition, behavior: 'smooth' });
+}
