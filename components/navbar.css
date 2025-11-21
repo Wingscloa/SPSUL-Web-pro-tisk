@@ -30,10 +30,7 @@
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.02em;
-    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #0b2132;
     font-family: 'Carter One', cursive;
 }
 
@@ -65,6 +62,8 @@
 }
 .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(0, 78, 132, 0.3); }
 .cta .cta-icon { width: 16px; height: 16px; margin-left: 8px; vertical-align: -2px; }
+
+/* .btn-primary používá jednotný styl z style.css */
 
 /* Hamburger visibility */
 .hamburger-btn { display: none; }
@@ -116,6 +115,7 @@
     .brand-name { font-size: 18px; }
     .cta { padding: 7px 12px; border-radius: 10px; }
     .cta .cta-icon { margin-left: 6px; }
+    .btn-primary { padding: 10px 20px; font-size: 15px; }
 }
 
 

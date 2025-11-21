@@ -92,10 +92,7 @@ body {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.02em;
-    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #0b2132;
     font-family: 'Carter One', cursive;
 }
 
@@ -193,6 +190,44 @@ body {
 
 /* Actions on the right */
 .actions { display: flex; align-items: center; gap: 12px; }
+
+/* Unified button style - applied to all buttons on the website */
+button:not(.icon-btn):not(.faq-q):not(.close-btn),
+a.btn-primary,
+button.btn-primary,
+.cta-button,
+.filter-btn,
+.pagination-btn,
+.pagination-number,
+.btn-outline {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 24px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    min-height: 20px !important;
+    background: var(--color-prim-dark, #004E84) !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    transition: transform .2s ease, box-shadow .2s ease !important;
+    box-shadow: 0 4px 12px rgba(0, 78, 132, 0.2) !important;
+}
+
+button:not(.icon-btn):not(.faq-q):not(.close-btn):hover,
+a.btn-primary:hover,
+button.btn-primary:hover,
+.cta-button:hover,
+.filter-btn:hover:not(.active),
+.pagination-btn:hover:not(:disabled),
+.pagination-number:hover:not(.active),
+.btn-outline:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(0, 78, 132, 0.3) !important;
+}
 
 .icon-btn {
     display: inline-flex;
