@@ -1,264 +1,35 @@
-.about {
-    padding: 20px 20px;
-    position: relative;
-}
-
-.about-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-}
-
-.about-header {
-    text-align: center;
-    margin-bottom: 24px;
-    display: grid;
-    gap: 10px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.about-pill {
-    display: inline-block;
-    margin: 0 auto;
-    padding: 8px 18px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, rgba(0, 78, 132, 0.12) 0%, rgba(140, 189, 221, 0.12) 100%);
-    color: var(--color-prim-dark);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    box-shadow: 0 2px 8px rgba(0, 78, 132, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.about-pill:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 78, 132, 0.15);
-}
-
-.about-title {
-    font-size: clamp(28px, 4vw, 36px);
-    font-weight: 700;
-    margin: 0 0 12px;
-    color: #0b2132;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-}
-
-.about-subtitle {
-    font-size: clamp(15px, 2vw, 18px);
-    color: #3a5160;
-    margin: 0;
-    line-height: 1.5;
-    font-weight: 400;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 24px;
-    align-items: center;
-}
-
-.about-media {
-    overflow: hidden;
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 0 12px 40px rgba(0, 78, 132, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.about-media:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0, 78, 132, 0.2), 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-.about-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.4s ease;
-}
-
-.about-media:hover .about-image {
-    transform: scale(1.03);
-}
-
-.about-content {
-    color: #111;
-    position: relative;
-}
-
-.about-badges {
-    display: flex;
-    gap: 10px;
-    margin: 0 0 16px;
-    flex-wrap: wrap;
-}
-
-.about-badge {
-    padding: 8px 16px;
-    border: 2px solid var(--color-prim-light);
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 14px;
-    background: linear-gradient(135deg, #ffffff 0%, var(--color-bg-light) 100%);
-    color: var(--color-prim-dark);
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0, 78, 132, 0.08);
-}
-
-.about-badge:hover {
-    background: linear-gradient(135deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
-    color: #ffffff;
-    border-color: var(--color-prim-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 78, 132, 0.2);
-}
-
-.about-text {
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0 0 20px;
-    color: #2a3a47;
-    font-weight: 400;
-}
-
-.about-content .cta {
-    margin-top: 8px;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 12px;
-}
-
-.about-curve {
-    display: block;
-    width: 180px;
-    margin: 16px 0 0 24px;
-    opacity: 0.6;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0, 78, 132, 0.1));
-}
-
-.about-content:hover .about-curve {
-    opacity: 0.8;
-    transform: translateX(4px);
-}
+.about { padding: 20px; }
+.about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; align-items: center; }
+.about-media { overflow: hidden; border-radius: 12px; }
+.about-image { width: 100%; height: auto; display: block; }
+.about-content { color: #111; }
+.about-title { font-size: 36px; line-height: 1.15; margin: 0 0 14px; font-weight: 800; }
+.about-badges { display: flex; gap: 10px; margin: 10px 0 14px; flex-wrap: wrap; }
+.about-badge { padding: 6px 12px; border: 1px solid rgba(0,0,0,0.2); border-radius: 999px; font-weight: 600; font-size: 14px; background: #fff; }
+.about-text { font-size: 16px; line-height: 1.7; margin: 10px 0 16px; }
+.about-curve { display: block; width: 220px; margin: 16px 0 0 28px; opacity: 0.85; }
 
 @media (max-width: 900px) {
-  .about {
-    padding: 20px 20px;
-  }
-  .about-header {
-    margin-bottom: 20px;
-  }
-  .about-title {
-    font-size: clamp(24px, 5vw, 32px);
-  }
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .about-media {
-    order: -1;
-  }
-  .about-curve {
-    margin-left: 0;
-    width: 160px;
-  }
+  .about-inner { grid-template-columns: 1fr; gap: 24px; }
+  .about-title { font-size: 30px; }
+  .about-curve { margin-left: 0; width: 180px; }
 }
 
 @media (max-width: 768px) {
-  .about {
-    padding: 16px 16px;
-  }
-  .about-header {
-    margin-bottom: 18px;
-    gap: 10px;
-  }
-  .about-title {
-    font-size: clamp(22px, 6vw, 28px);
-  }
-  .about-subtitle {
-    font-size: clamp(14px, 2.5vw, 16px);
-  }
-  .about-grid {
-    gap: 20px;
-  }
-  .about-text {
-    font-size: 15px;
-  }
-  .about-badges {
-    gap: 8px;
-    margin: 0 0 16px;
-  }
-  .about-badge {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-  .about-content .cta {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-  .about-curve {
-    width: 140px;
-    margin-top: 12px;
-  }
+  .about { padding: 16px; }
+  .about-inner { gap: 20px; }
+  .about-title { font-size: 26px; margin-bottom: 12px; }
+  .about-text { font-size: 15px; }
+  .about-badges { gap: 8px; margin: 8px 0 12px; }
+  .about-badge { padding: 5px 10px; font-size: 13px; }
+  .about-curve { width: 160px; margin-top: 12px; }
 }
 
 @media (max-width: 480px) {
-  .about {
-    padding: 16px 12px;
-  }
-  .about-header {
-    margin-bottom: 16px;
-    gap: 8px;
-  }
-  .about-pill {
-    padding: 5px 12px;
-    font-size: 11px;
-  }
-  .about-title {
-    font-size: 20px;
-    margin: 0 0 10px;
-  }
-  .about-subtitle {
-    font-size: 14px;
-  }
-  .about-grid {
-    gap: 18px;
-  }
-  .about-media {
-    border-radius: 12px;
-  }
-  .about-text {
-    font-size: 14px;
-    line-height: 1.55;
-    margin: 0 0 16px;
-  }
-  .about-badges {
-    gap: 6px;
-    margin: 0 0 14px;
-  }
-  .about-badge {
-    font-size: 11px;
-    padding: 5px 10px;
-  }
-  .about-content .cta {
-    padding: 9px 18px;
-    font-size: 13px;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .about-curve {
-    width: 120px;
-    margin-top: 12px;
-  }
+  .about { padding: 12px; }
+  .about-title { font-size: 22px; line-height: 1.2; }
+  .about-text { font-size: 14px; line-height: 1.6; }
+  .about-badges { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .about-badge { font-size: 12px; padding: 4px 8px; }
+  .about-curve { width: 140px; margin-top: 8px; }
 }
