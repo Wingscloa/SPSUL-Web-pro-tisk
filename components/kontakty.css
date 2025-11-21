@@ -39,24 +39,12 @@ body {
 .contact-header h2 {
     font-size: 32px;
     font-weight: 700;
-    color: var(--sec-dark);
     margin: 0 0 10px 0;
     position: relative;
     display: inline-block;
 }
 
-/* Ozdobná čára pod nadpisem */
-.contact-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--prim-dark), var(--prim-light));
-    border-radius: 2px;
-}
+
 
 .contact-header p {
     font-size: 16px;
@@ -75,19 +63,54 @@ body {
 
 /* --- Levý sloupec: Formulář --- */
 .contact-form-wrapper {
+    position: relative;
     background: linear-gradient(135deg, var(--prim-dark) 0%, var(--prim-light) 100%);
-    padding: 80px;
+    padding: 64px 54px;
     color: var(--white);
-    /* Tento 'border-radius' vytváří organický "blob" tvar */
-    border-radius: 45% 55% 62% 38% / 51% 41% 59% 49%;
+    border-radius: 36px;
     box-shadow: 0 16px 40px rgba(0, 78, 132, 0.25);
-    transition: border-radius 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    overflow: hidden;
+    isolation: isolate;
 }
 
-
-/* Malá animace "blobu" při najetí */
 .contact-form-wrapper:hover {
-    border-radius: 51% 41% 59% 49% / 45% 55% 62% 38%;
+    transform: translateY(-6px);
+    box-shadow: 0 26px 52px rgba(0, 78, 132, 0.3);
+}
+
+.contact-form-wrapper::before,
+.contact-form-wrapper::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(28px);
+    opacity: 0.65;
+    z-index: -1;
+    transition: transform 5s ease-in-out;
+}
+
+.contact-form-wrapper::before {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.32) 0%, rgba(140,189,221,0) 70%);
+    top: -140px;
+    right: -90px;
+    animation: contactGlow 12s ease-in-out infinite alternate;
+}
+
+.contact-form-wrapper::after {
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle at center, rgba(188,222,255,0.45) 0%, rgba(0,0,0,0) 80%);
+    bottom: -120px;
+    left: -80px;
+    animation: contactGlow 14s ease-in-out infinite alternate-reverse;
+}
+
+.contact-form-wrapper:hover::before,
+.contact-form-wrapper:hover::after {
+    transform: scale(1.08) translate3d(6px, -6px, 0);
 }
 
 .contact-form-wrapper h3 {
@@ -147,25 +170,7 @@ body {
     border: 0;
 }
 
-/* CTA Tlačítko (podobné jako v T-Shark) */
-.cta-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-    /* Gradient z vaší palety */
-    background: linear-gradient(90deg, var(--prim-dark) 0%, var(--sec-dark) 100%);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 6px 14px rgba(0, 78, 132, 0.25);
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 18px rgba(0, 78, 132, 0.3);
-}
+/* CTA Tlačítko - používá jednotný styl z style.css */
 
 /* --- Pravý sloupec: Detaily --- */
 .contact-details {
@@ -281,11 +286,14 @@ body {
     }
 
     .contact-form-wrapper {
-        /* Mírné zjednodušení "blobu" na mobilu */
-        border-radius: 30px;
+        border-radius: 28px;
         padding: 30px 25px;
-        /* Zrušíme horizontální posun "blobu" */
         margin: 0 -20px; 
-        
     }
+}
+
+@keyframes contactGlow {
+    0% { transform: translate3d(0,0,0) scale(1); opacity: 0.55; }
+    50% { transform: translate3d(12px,-14px,0) scale(1.12); opacity: 0.72; }
+    100% { transform: translate3d(-18px,16px,0) scale(0.96); opacity: 0.6; }
 }

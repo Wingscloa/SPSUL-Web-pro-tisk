@@ -1,10 +1,47 @@
-.gallery { padding: 16px 20px 56px; }
+.gallery { padding: 20px; }
 .gallery-inner { max-width: 1100px; margin: 0 auto; }
-.gallery-title { text-align: center; font-size: 28px; font-weight: 800; margin: 0 0 18px; color: #111; font-family: 'Carter One', cursive; }
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: grid;
+    gap: 12px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gallery-pill {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(0, 78, 132, 0.1);
+    color: var(--color-prim-dark);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.gallery-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: #111;
+    line-height: 1.2;
+}
+
+.gallery-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
 
 .cards{ display:flex; align-items:flex-end; gap: -60px; perspective:1000px; justify-content:center; }
 .card-wrapper{ display:flex; flex-direction:column; align-items:center; transition: margin 0.3s ease; }
-.letter{ font-size:3rem; font-weight:800; margin-bottom:12px; user-select:none; text-align:center; transition: transform 0.3s ease; font-family: 'Carter One', cursive; color: #111; }
+.letter{ font-size:2.25rem; font-weight:700; margin-bottom:12px; user-select:none; text-align:center; transition: transform 0.3s ease; font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--color-prim-dark); letter-spacing: 0.12em; text-transform: uppercase; }
 .card{ width:180px; height:180px; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor:pointer; }
 .card img{ width:100%; height:100%; object-fit:cover; display:block; }
 
@@ -21,10 +58,31 @@
 .lightbox img{ max-width:90%; max-height:90%; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.5); }
 .arrow{ position:absolute; top:50%; transform:translateY(-50%); font-size:3rem; color:white; background:rgba(0,0,0,0.3); padding:0.5rem 1rem; border-radius:8px; cursor:pointer; user-select:none; }
 .arrow:hover{background:rgba(0,0,0,0.5);} .arrow.left{left:20px;} .arrow.right{right:20px;}
+.close-btn{ position:absolute; top:20px; right:20px; font-size:2.5rem; color:white; background:rgba(0,0,0,0.3); padding:0.5rem 1rem; border-radius:8px; cursor:pointer; user-select:none; line-height:1; width:48px; height:48px; display:flex; align-items:center; justify-content:center; }
+.close-btn:hover{background:rgba(0,0,0,0.5);}
 
 @media (max-width: 900px) {
+  .gallery-title {
+    font-size: 30px;
+  }
+  
   .cards { gap: 10px; flex-wrap: wrap; }
   .card { width: 44vw; height: 44vw; max-width: 200px; max-height: 200px; }
+  .letter { font-size: 1.75rem; }
+}
+
+@media (max-width: 768px) {
+  .gallery { padding: 16px; }
+  .gallery-header { margin-bottom: 32px; }
+  .gallery-title { font-size: 26px; }
+  .gallery-subtitle { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .gallery { padding: 12px; }
+  .gallery-header { margin-bottom: 24px; }
+  .gallery-title { font-size: 22px; }
+  .gallery-subtitle { font-size: 15px; }
 }
 
 

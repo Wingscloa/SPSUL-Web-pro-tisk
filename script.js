@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const lightboxImg = root.querySelector('#lightbox-img');
             const prev = root.querySelector('#prev');
             const next = root.querySelector('#next');
+            const closeBtn = root.querySelector('#close-lightbox');
             if (!lightbox || !lightboxImg || !prev || !next) return;
             let current = 0;
             const show = (i) => {
@@ -71,15 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 lightboxImg.src = imgs[current].src;
                 lightbox.classList.add('show');
             };
+            const hide = () => {
+                lightbox.classList.remove('show');
+            };
             imgs.forEach((img, i) => img.addEventListener('click', () => show(i)));
             prev.onclick = (e) => { e.stopPropagation(); show(current - 1); };
             next.onclick = (e) => { e.stopPropagation(); show(current + 1); };
-            lightbox.onclick = (e) => { if (e.target === lightbox) lightbox.classList.remove('show'); };
+            if (closeBtn) closeBtn.onclick = (e) => { e.stopPropagation(); hide(); };
+            lightbox.onclick = (e) => { if (e.target === lightbox) hide(); };
             document.addEventListener('keydown', (e) => {
                 if (!lightbox.classList.contains('show')) return;
                 if (e.key === 'ArrowLeft') show(current - 1);
                 if (e.key === 'ArrowRight') show(current + 1);
-                if (e.key === 'Escape') lightbox.classList.remove('show');
+                if (e.key === 'Escape') hide();
             });
             wrappers.forEach((wrapper, index) => {
                 wrapper.addEventListener('mouseenter', () => {

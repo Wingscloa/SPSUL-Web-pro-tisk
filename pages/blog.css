@@ -32,29 +32,11 @@
     justify-content: center;
 }
 
-.filter-btn {
-    padding: 10px 20px;
-    border: 2px solid var(--color-sec-light);
-    background: #fff;
-    color: #666;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.filter-btn:hover {
-    border-color: var(--color-prim-dark);
-    color: var(--color-prim-dark);
-}
-
+/* Filter buttons - používají jednotný styl z style.css */
 .filter-btn.active {
-    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
-    border-color: transparent;
-    color: white;
+    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%) !important;
+    border-color: transparent !important;
+    color: white !important;
 }
 
 .blog-list {
@@ -75,6 +57,10 @@
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
+}
+
+.blog-item:last-child {
+    max-width: 1200px;
 }
 
 .blog-item:hover {
@@ -220,25 +206,11 @@
     margin-top: 48px;
 }
 
-.pagination-btn {
-    padding: 10px 20px;
-    border: 2px solid var(--color-sec-light);
-    background: #fff;
-    color: #666;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.pagination-btn:hover:not(:disabled) {
-    border-color: var(--color-prim-dark);
-    color: var(--color-prim-dark);
-}
-
+/* Pagination buttons - používají jednotný styl z style.css */
 .pagination-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
 }
 
 .pagination-numbers {
@@ -246,30 +218,17 @@
     gap: 8px;
 }
 
+/* Pagination numbers - používají jednotný styl z style.css, ale s fixní velikostí */
 .pagination-number {
     width: 40px;
     height: 40px;
-    border: 2px solid var(--color-sec-light);
-    background: #fff;
-    color: #666;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pagination-number:hover {
-    border-color: var(--color-prim-dark);
-    color: var(--color-prim-dark);
+    padding: 0;
 }
 
 .pagination-number.active {
-    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
-    border-color: transparent;
-    color: white;
+    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%) !important;
+    border-color: transparent !important;
+    color: white !important;
 }
 
 /* Blog Article Detail Styles */
@@ -547,6 +506,10 @@
         max-width: 900px;
         padding: 28px;
     }
+    
+    .blog-item:last-child {
+        max-width: 1100px;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -555,6 +518,10 @@
         gap: 24px;
         padding: 24px;
         max-width: 800px;
+    }
+    
+    .blog-item:last-child {
+        max-width: 950px;
     }
     
     .blog-item-image {

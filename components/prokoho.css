@@ -1,6 +1,30 @@
 .forwho { padding: 16px 20px 56px; }
 .forwho-inner { max-width: 1100px; margin: 0 auto; }
-.forwho-title { text-align: center; font-size: 28px; font-weight: 800; margin: 0 0 22px; }
+
+.forwho-header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: grid;
+    gap: 12px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.forwho-pill {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(0, 78, 132, 0.1);
+    color: var(--color-prim-dark);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.forwho-title { text-align: center; font-size: 28px; font-weight: 800; margin: 0; }
 .forwho-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .forwho-card { background: #fff; border-radius: 22px; padding: 22px 18px; text-align: center; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 10px 24px rgba(0, 78, 132, 0.08); }
 .forwho-name { margin: 0 0 8px; font-size: 20px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; }
