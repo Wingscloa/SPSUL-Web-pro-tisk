@@ -87,16 +87,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'Escape') hide();
             });
             wrappers.forEach((wrapper, index) => {
+                const card = wrapper.querySelector('.card');
+                // Store the original transform - read from inline style attribute or style object
+                // Parse from style attribute to ensure we get the exact value
+                const styleAttr = card.getAttribute('style') || '';
+                let originalTransform = '';
+                if (styleAttr.includes('transform:')) {
+                    const match = styleAttr.match(/transform:\s*([^;]+)/);
+                    if (match) {
+                        originalTransform = match[1].trim();
+                    }
+                }
+                // Fallback to style object if attribute parsing didn't work
+                if (!originalTransform) {
+                    originalTransform = card.style.transform || '';
+                }
+                card.setAttribute('data-transform', originalTransform);
+                
                 wrapper.addEventListener('mouseenter', () => {
                     wrappers.forEach((w, i) => {
                         const card = w.querySelector('.card');
                         const letter = w.querySelector('.letter');
                         const distance = i - index;
                         if (distance === 0) {
-                            card.style.transform += ' scale(1.15) translateY(-10px)';
+                            const original = card.getAttribute('data-transform') || '';
+                            // Combine original transform with hover effects
+                            card.style.transform = original ? `${original} scale(1.15) translateY(-10px)` : 'scale(1.15) translateY(-10px)';
                             card.style.zIndex = 10;
                             card.style.boxShadow = '0 12px 24px rgba(0,0,0,0.3)';
-                            letter.style.transform = 'scale(1.2)';
+                            if (letter) letter.style.transform = 'scale(1.2)';
                         } else {
                             let offset = 30 - Math.abs(distance) * 10;
                             if (offset < 0) offset = 0;
@@ -108,15 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     wrappers.forEach((w) => {
                         const card = w.querySelector('.card');
                         const letter = w.querySelector('.letter');
-                        card.style.transform = card.getAttribute('data-transform') || '';
+                        // Restore the exact original transform
+                        const originalTransform = card.getAttribute('data-transform') || '';
+                        if (originalTransform) {
+                            card.style.transform = originalTransform;
+                        } else {
+                            // If no original transform, clear the inline style to let CSS take over
+                            card.style.transform = '';
+                        }
                         card.style.zIndex = '';
                         card.style.boxShadow = '';
-                        letter.style.transform = '';
+                        if (letter) letter.style.transform = '';
                         w.style.marginLeft = '';
                     });
                 });
-                const card = wrapper.querySelector('.card');
-                card.setAttribute('data-transform', card.style.transform);
             });
         });
     }
