@@ -160,6 +160,38 @@
     font-size: 14px;
     color: rgba(17,17,17,0.6);
 }
+.footer-logistics {
+    /* Odsazení od spodního copyrightu */
+    margin-bottom: 20px;
+    /* Rozložení: Skupiny vlevo a vpravo */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Aby se to na menších PC zalomilo, když bude třeba */
+    gap: 40px; /* Mezera mezi skupinou platby a dopravy */
+}
+
+.logistics-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Mezera mezi nadpisem a ikonkami */
+}
+
+/* Kontejner pro řadu ikonek */
+.logistics-icons {
+    display: flex;
+    align-items: center; 
+    gap: 20px; /* Mezera mezi jednotlivými logy */
+    flex-wrap: wrap;
+}
+
+/* Stylování  obrázků */
+.logistics-icons img {
+    height: 32px; 
+    width: auto;
+    object-fit: contain;
+    backface-visibility: hidden;
+    filter: grayscale(35%) 
+}
 
 @media (max-width: 640px) {
     .footer-brand {
@@ -169,6 +201,21 @@
 
     .footer-bottom {
         text-align: left;
+    }
+    .footer-logistics {
+        flex-direction: column; /* Skupiny pod sebe */
+        align-items: flex-start;
+        gap: 32px;
+        padding-top: 24px;
+    }
+    
+    .logistics-icons {
+        gap: 16px; /* Menší mezery mezi logy na mobilu */
+    }
+    
+    /* Na mobilu můžeme loga trochu zmenšit, pokud by to bylo moc namačkané */
+    .logistics-icons img {
+        height: 28px;
     }
 }
 

@@ -1,5 +1,5 @@
 .gallery { padding: 20px; }
-.gallery-inner { max-width: 1100px; margin: 0 auto; }
+.gallery-inner { max-width: 1100px; margin: 0 auto; margin-bottom: 50px; }
 
 .gallery-header {
     text-align: center;
