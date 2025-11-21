@@ -86,37 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'ArrowRight') show(current + 1);
                 if (e.key === 'Escape') hide();
             });
-            wrappers.forEach((wrapper, index) => {
-                wrapper.addEventListener('mouseenter', () => {
-                    wrappers.forEach((w, i) => {
-                        const card = w.querySelector('.card');
-                        const letter = w.querySelector('.letter');
-                        const distance = i - index;
-                        if (distance === 0) {
-                            card.style.transform += ' scale(1.15) translateY(-10px)';
-                            card.style.zIndex = 10;
-                            card.style.boxShadow = '0 12px 24px rgba(0,0,0,0.3)';
-                            letter.style.transform = 'scale(1.2)';
-                        } else {
-                            let offset = 30 - Math.abs(distance) * 10;
-                            if (offset < 0) offset = 0;
-                            w.style.marginLeft = offset + 'px';
-                        }
-                    });
-                });
-                wrapper.addEventListener('mouseleave', () => {
-                    wrappers.forEach((w) => {
-                        const card = w.querySelector('.card');
-                        const letter = w.querySelector('.letter');
-                        card.style.transform = card.getAttribute('data-transform') || '';
-                        card.style.zIndex = '';
-                        card.style.boxShadow = '';
-                        letter.style.transform = '';
-                        w.style.marginLeft = '';
-                    });
-                });
+            // Preserve original layout transforms only; disable interactive scaling so cards keep their size.
+            wrappers.forEach((wrapper) => {
                 const card = wrapper.querySelector('.card');
-                card.setAttribute('data-transform', card.style.transform);
+                if (card && !card.getAttribute('data-transform')) {
+                    card.setAttribute('data-transform', card.style.transform);
+                }
             });
         });
     }
