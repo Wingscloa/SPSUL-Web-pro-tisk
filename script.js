@@ -86,12 +86,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'ArrowRight') show(current + 1);
                 if (e.key === 'Escape') hide();
             });
-            // Preserve original layout transforms only; disable interactive scaling so cards keep their size.
             wrappers.forEach((wrapper) => {
                 const card = wrapper.querySelector('.card');
-                if (card && !card.getAttribute('data-transform')) {
-                    card.setAttribute('data-transform', card.style.transform);
-                }
+                const letter = wrapper.querySelector('.letter');
+                if (!card) return;
+                const baseTransform = card.style.transform || '';
+                card.setAttribute('data-transform', baseTransform);
+
+                wrapper.addEventListener('mouseenter', () => {
+                    const stored = card.getAttribute('data-transform') || '';
+                    card.style.transform = `${stored} scale(1.08) translateY(-6px)`;
+                    card.style.zIndex = 5;
+                    card.style.boxShadow = '0 15px 30px rgba(0,0,0,0.25)';
+                    if (letter) {
+                        letter.style.transform = 'scale(1.08)';
+                    }
+                });
+
+                wrapper.addEventListener('mouseleave', () => {
+                    card.style.transform = card.getAttribute('data-transform') || '';
+                    card.style.zIndex = '';
+                    card.style.boxShadow = '';
+                    if (letter) {
+                        letter.style.transform = '';
+                    }
+                });
             });
         });
     }
