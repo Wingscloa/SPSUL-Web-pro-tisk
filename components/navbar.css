@@ -8,6 +8,7 @@
     border-bottom: 0;
     padding: 0;
 }
+
 .navbar {
     max-width: 1100px;
     margin: 0 auto;
@@ -18,13 +19,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     position: relative;
 }
 
-.brand { display: flex; align-items: center; gap: 16px; }
-.brand-link { text-decoration: none; }
-.brand-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 50%; background: #fff; }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.brand-link {
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+}
 
 .brand-name {
     font-size: 22px;
@@ -34,56 +49,140 @@
     font-family: 'Carter One', cursive;
 }
 
-.nav-links { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
-.nav-links a {
-    position: relative; display: inline-block; text-decoration: none; color: #111;
-    font-weight: 600; font-size: 18px; padding: 2px 0; transition: color .2s ease;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
 }
-.nav-links a::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px;
-    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
-    opacity: 0; transform: scaleX(0.6); transition: opacity .2s ease, transform .2s ease; border-radius: 2px;
-}
-.nav-links a:hover::after, .nav-links a.active::after { opacity: 1; transform: scaleX(1); }
-.nav-links a:hover { color: var(--color-prim-dark); }
 
-.actions { display: flex; align-items: center; gap: 12px; }
-.icon-btn {
-    display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px;
-    border-radius: 50%; border: 1px solid rgba(0,0,0,0.08); background: #fff; color: var(--color-prim-dark);
-    cursor: pointer; transition: background .2s ease, box-shadow .2s ease;
+.nav-links a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #111;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 2px 0;
+    transition: color .2s ease;
 }
-.icon-btn:hover { background: var(--color-bg-light); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
+    opacity: 0;
+    transform: scaleX(0.6);
+    transition: opacity .2s ease, transform .2s ease;
+    border-radius: 2px;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.nav-links a:hover {
+    color: var(--color-prim-dark);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+    color: var(--color-prim-dark);
+    cursor: pointer;
+    transition: background .2s ease, box-shadow .2s ease;
+}
+
+.icon-btn:hover {
+    background: var(--color-bg-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
 
 .cta {
-    display: inline-block; padding: 8px 14px; border-radius: 10px; text-decoration: none; font-weight: 700; color: #fff;
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #fff;
     background: linear-gradient(90deg, var(--color-prim-dark) 0%, var(--color-prim-light) 100%);
-    box-shadow: 0 6px 14px rgba(0, 78, 132, 0.25); transition: transform .12s ease, box-shadow .2s ease;
+    box-shadow: 0 6px 14px rgba(0, 78, 132, 0.25);
+    transition: transform .12s ease, box-shadow .2s ease;
 }
-.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(0, 78, 132, 0.3); }
-.cta .cta-icon { width: 16px; height: 16px; margin-left: 8px; vertical-align: -2px; }
+
+.cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(0, 78, 132, 0.3);
+}
+
+.cta .cta-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    vertical-align: -2px;
+}
 
 /* .btn-primary používá jednotný styl z style.css */
 
 /* Hamburger visibility */
-.hamburger-btn { display: none; }
+.hamburger-btn {
+    display: none;
+}
 
 /* Mobile menu container */
-.nav-group { display: flex; align-items: center; gap: 24px; }
+.nav-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.close-menu-btn {
+    display: none;
+}
 
 /* Responsive navbar */
 @media (max-width: 980px) {
-    .navbar { padding: 10px 14px; }
-    .nav-links { gap: 18px; }
-    .nav-links a { font-size: 16px; }
-    .brand-name { font-size: 20px; }
+    .navbar {
+        padding: 10px 14px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 760px) {
     .navbar {
         padding: 10px 12px;
         align-items: center;
-        position: relative; 
+        position: relative;
         z-index: 1005;
     }
 
@@ -91,9 +190,9 @@
         display: inline-flex;
         margin-left: auto;
         z-index: 1040;
-    }x
-    
-    body:has(.nav-group.open) .hamburger-btn {
+    }
+
+    x body:has(.nav-group.open) .hamburger-btn {
         opacity: 0;
         pointer-events: none;
     }
@@ -102,88 +201,116 @@
         position: fixed;
         top: 0;
         left: 0;
-        right: 0; 
+        right: 0;
         width: 100%;
         height: 100vh;
-        
+
         box-sizing: border-box;
-        
+
         /* ZMĚNA 1: Padding určuje, jak daleko od levého okraje text začne */
-        padding: 80px 30px;        
+        padding: 80px 30px;
         display: flex;
         flex-direction: column;
-        
+
         /* ZMĚNA 2: Místo 'center' dáme 'flex-start' -> vše se zarovná vlevo */
-        align-items: flex-start; 
-        justify-content: flex-start; 
+        align-items: flex-start;
+        justify-content: flex-start;
         gap: 30px;
-        
+
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        
+
         z-index: 1050;
-        opacity: 0;
+        opacity: 1;
         visibility: hidden;
         pointer-events: none;
-        transition: all 0.3s ease;
+
+        /* Clip-path animation setup */
+        /* Start circle at top-right (approx hamburger position) */
+        clip-path: circle(0px at calc(100% - 40px) 40px);
+        transition: clip-path 1.2s cubic-bezier(0.19, 1, 0.22, 1), visibility 1.2s step-end;
+        /* Ensure no transform interference */
+        transform: none;
     }
 
     .nav-group.open {
         visibility: visible;
-        opacity: 1;
         pointer-events: auto;
+        /* Expand to cover full screen */
+        clip-path: circle(150% at calc(100% - 40px) 40px);
+        transition: clip-path 1.2s cubic-bezier(0.19, 1, 0.22, 1), visibility 1.2s step-start;
     }
 
     .close-menu-btn {
+        display: flex;
         position: absolute;
         top: 25px;
-        right: 25px; 
+        right: 25px;
         background: transparent;
         border: none;
         box-shadow: none;
-        width: 44px; 
+        width: 44px;
         height: 44px;
         color: #111;
-        display: flex; 
+        display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     .close-menu-btn svg {
         width: 32px;
         height: 32px;
+        stroke: #111;
     }
 
     .nav-links {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        
+
         /* ZMĚNA 3: I seznam odkazů musí být zarovnaný vlevo */
         align-items: flex-start;
-        
+
         width: 100%;
         padding: 0;
         margin: 0;
     }
-    
+
     .actions {
         width: 100%;
         display: flex;
-        
+
         /* ZMĚNA 4: Tlačítko zarovnáme taky vlevo (nebo ho nech center, pokud chceš) */
-        justify-content: flex-start; 
+        justify-content: flex-start;
     }
 }
 
 @media (max-width: 480px) {
-    .brand { gap: 10px; }
-    .brand-logo { width: 32px; height: 32px; }
-    .brand-name { font-size: 18px; }
-    .cta { padding: 7px 12px; border-radius: 10px; }
-    .cta .cta-icon { margin-left: 6px; }
-    .btn-primary { padding: 10px 20px; font-size: 15px; }
+    .brand {
+        gap: 10px;
+    }
+
+    .brand-logo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .cta {
+        padding: 7px 12px;
+        border-radius: 10px;
+    }
+
+    .cta .cta-icon {
+        margin-left: 6px;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
 }
-
-

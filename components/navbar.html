@@ -6,16 +6,23 @@
             <span class="brand-name">T‑Shark</span>
         </a>
         <button class="icon-btn hamburger-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" fill="currentColor"/>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" fill="currentColor" />
             </svg>
         </button>
         <div class="nav-group" id="mobile-menu">
+            <button class="close-menu-btn" aria-label="Zavřít menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
             <ul class="nav-links">
-                <li><a  onclick="scrollToAnchor('about-us', 175)">O nás</a></li>
-                <li><a  onclick="scrollToAnchor('galerie', 175)">Galerie</a></li>
-                <li><a  onclick="scrollToAnchor('testimonials', 175)">Recenze</a></li>
-                <li><a  onclick="scrollToAnchor('kontakty', 55)">Kontakt</a></li>
+                <li><a onclick="scrollToAnchor('about-us', 175)">O nás</a></li>
+                <li><a onclick="scrollToAnchor('galerie', 175)">Galerie</a></li>
+                <li><a onclick="scrollToAnchor('testimonials', 175)">Recenze</a></li>
+                <li><a onclick="scrollToAnchor('kontakty', 55)">Kontakt</a></li>
             </ul>
             <div class="actions">
                 <a class="btn-primary" href="#objednat">Přejít na e-shop</a>
