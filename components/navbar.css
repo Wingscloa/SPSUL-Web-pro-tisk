@@ -80,33 +80,101 @@
 }
 
 @media (max-width: 760px) {
-    .navbar { padding: 10px 12px; align-items: center; }
-    .hamburger-btn { display: inline-flex; margin-left: auto; }
-    .nav-group { position: absolute; left: 50%; right: auto; top: calc(100% + 8px); background: rgba(255,255,255,0.92); border-radius: 14px; box-shadow: 0 16px 30px rgba(0,0,0,0.18); padding: 14px; display: flex; flex-direction: column; align-items: stretch; gap: 12px; z-index: 100; 
-        width: min(88vw, 340px); transform: translateX(-50%);
-        border: 1px solid rgba(0,0,0,0.06); backdrop-filter: saturate(140%) blur(8px);
-        /* animated dropdown state (hidden by default) */
-        opacity: 0; visibility: hidden; pointer-events: none; overflow: hidden;
-        transform: translateX(-50%) translateY(-8px) scale(0.98); transform-origin: top center;
-        transition: opacity .22s ease, transform .28s ease, visibility 0s linear .28s; }
-    .nav-group.open { visibility: visible; opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0) scale(1); transition-delay: 0s, 0s, 0s; }
-    .nav-group::before { content: ""; position: absolute; top: -8px; left: 50%; width: 14px; height: 14px; background: inherit; border-left: 1px solid rgba(0,0,0,0.06); border-top: 1px solid rgba(0,0,0,0.06); transform: translateX(-50%) rotate(45deg); }
-    .nav-links { display: flex; flex-direction: column; gap: 10px; }
-    .nav-links a { padding: 10px 12px; border-radius: 10px; }
-    .nav-links a::after { display: none; }
-    .nav-links a:hover { background: rgba(0,0,0,0.04); }
-    .actions { display: flex; justify-content: space-between; }
-    .brand { margin-right: 8px; }
+    .navbar {
+        padding: 10px 12px;
+        align-items: center;
+        position: relative; 
+        z-index: 1005;
+    }
 
-    /* Staggered reveal for items */
-    .nav-group .nav-links > li, .nav-group .actions > * { opacity: 0; transform: translateY(-6px); transition: opacity .22s ease, transform .28s ease; }
-    .nav-group.open .nav-links > li, .nav-group.open .actions > * { opacity: 1; transform: translateY(0); }
-    .nav-group.open .nav-links > li:nth-child(1) { transition-delay: .02s; }
-    .nav-group.open .nav-links > li:nth-child(2) { transition-delay: .06s; }
-    .nav-group.open .nav-links > li:nth-child(3) { transition-delay: .10s; }
-    .nav-group.open .nav-links > li:nth-child(4) { transition-delay: .14s; }
-    .nav-group.open .actions > *:nth-child(1) { transition-delay: .12s; }
-    .nav-group.open .actions > *:nth-child(2) { transition-delay: .16s; }
+    .hamburger-btn {
+        display: inline-flex;
+        margin-left: auto;
+        z-index: 1040;
+    }x
+    
+    body:has(.nav-group.open) .hamburger-btn {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-group {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0; 
+        width: 100%;
+        height: 100vh;
+        
+        box-sizing: border-box;
+        
+        /* ZMĚNA 1: Padding určuje, jak daleko od levého okraje text začne */
+        padding: 80px 30px;        
+        display: flex;
+        flex-direction: column;
+        
+        /* ZMĚNA 2: Místo 'center' dáme 'flex-start' -> vše se zarovná vlevo */
+        align-items: flex-start; 
+        justify-content: flex-start; 
+        gap: 30px;
+        
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        
+        z-index: 1050;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .nav-group.open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .close-menu-btn {
+        position: absolute;
+        top: 25px;
+        right: 25px; 
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        width: 44px; 
+        height: 44px;
+        color: #111;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .close-menu-btn svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        
+        /* ZMĚNA 3: I seznam odkazů musí být zarovnaný vlevo */
+        align-items: flex-start;
+        
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .actions {
+        width: 100%;
+        display: flex;
+        
+        /* ZMĚNA 4: Tlačítko zarovnáme taky vlevo (nebo ho nech center, pokud chceš) */
+        justify-content: flex-start; 
+    }
 }
 
 @media (max-width: 480px) {

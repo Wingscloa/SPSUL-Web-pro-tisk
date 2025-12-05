@@ -12,7 +12,7 @@
 @media (max-width: 900px) {
   .about-inner { grid-template-columns: 1fr; gap: 24px; }
   .about-title { font-size: 30px; }
-  .about-curve { margin-left: 0; width: 180px; }
+  .about-curve { visibility: hidden; }
 }
 
 @media (max-width: 768px) {
