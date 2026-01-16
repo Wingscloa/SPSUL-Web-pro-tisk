@@ -224,10 +224,47 @@ window.addEventListener("load", function () {
 })
 
 function scrollToAnchor(name, offset) {
+    // Check if we're on the homepage (root path or index.html)
+    const currentPath = window.location.pathname;
+    const isHomePage = currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('/');
+    
+    if (!isHomePage) {
+        // Redirect to homepage with hash
+        window.location.href = `/#${name}`;
+        return;
+    }
+    
+    // We're on homepage, scroll to element
     var element = document.getElementById(name);
+    if (!element) {
+        console.warn('Element not found:', name);
+        return;
+    }
+    
     var headerOffset = offset;
     var elementPosition = element.getBoundingClientRect().top;
     var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    console.log(offsetPosition)
+    console.log(offsetPosition);
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
 }
+
+// Handle hash on page load (for redirects from other pages)
+window.addEventListener('load', () => {
+    const hash = window.location.hash.substring(1); // Remove the #
+    if (hash) {
+        // Wait a bit for components to load
+        setTimeout(() => {
+            const element = document.getElementById(hash);
+            if (element) {
+                // Determine offset based on common sections
+                let offset = 175;
+                if (hash === 'kontakty') offset = 55;
+                
+                var headerOffset = offset;
+                var elementPosition = element.getBoundingClientRect().top;
+                var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }, 300);
+    }
+});

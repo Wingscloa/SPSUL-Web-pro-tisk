@@ -1,0 +1,14 @@
+# robots.txt pro T-Shark - Potisk triček
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /assets/favicon/
+
+# Sitemap
+Sitemap: https://www.t-shark.cz/sitemap.xml
+
+# Crawl-delay pro boty
+User-agent: *
+Crawl-delay: 1
