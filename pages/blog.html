@@ -14,8 +14,10 @@
 </head>
 
 <body>
-    <div class="sticky-nav-host"><div id="navbar"></div></div>
-    
+    <div class="sticky-nav-host">
+        <div id="navbar"></div>
+    </div>
+
     <main class="page-content">
         <div class="blog-page">
             <div class="blog-page-header">
@@ -23,26 +25,11 @@
                 <p class="blog-page-subtitle">Tipy, triky a inspirace pro vaše trička a potisky</p>
             </div>
 
-            <div class="blog-filters">
-                <button class="filter-btn active" data-category="all">Všechny</button>
-                <button class="filter-btn" data-category="tipy">Tipy</button>
-                <button class="filter-btn" data-category="trendy">Trendy</button>
-                <button class="filter-btn" data-category="pece">Péče</button>
-                <button class="filter-btn" data-category="novinky">Novinky</button>
-            </div>
-
             <div class="blog-list" id="blog-list">
                 <!-- Blog items will be dynamically generated -->
             </div>
 
-            <div class="blog-pagination">
-                <button class="pagination-btn prev" disabled>Předchozí</button>
-                <div class="pagination-numbers">
-                    <button class="pagination-number active">1</button>
-                    <button class="pagination-number">2</button>
-                    <button class="pagination-number">3</button>
-                </div>
-                <button class="pagination-btn next">Další</button>
+            <div class="blog-pagination" id="blog-pagination">
             </div>
         </div>
     </main>
