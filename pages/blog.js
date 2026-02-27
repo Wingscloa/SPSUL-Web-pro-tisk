@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(checkBlogData, 50);
         }
     };
-    
+
     checkBlogData();
 });
 
@@ -37,11 +37,11 @@ let blogInitialized = false;
 function initializeBlog() {
     if (blogInitialized) return;
     blogInitialized = true;
-    
+
     // Check if we're on a blog detail page first
     const hash = window.location.hash;
     const blogId = hash ? hash.substring(1) : null;
-    
+
     if (blogId && blogId !== '') {
         // Show blog detail directly if we have a hash
         showBlogDetail(blogId);
@@ -49,12 +49,12 @@ function initializeBlog() {
         // Show blog list if no hash
         showBlogList();
     }
-    
+
     // Listen for hash changes
     window.addEventListener('hashchange', () => {
         const newHash = window.location.hash;
         const newBlogId = newHash ? newHash.substring(1) : null;
-        
+
         if (newBlogId && newBlogId !== '') {
             // Add a small delay to ensure smooth transition
             setTimeout(() => {
@@ -64,7 +64,7 @@ function initializeBlog() {
             showBlogList();
         }
     });
-    
+
     // Add fade-in animation CSS
     const style = document.createElement('style');
     style.textContent = `
@@ -76,20 +76,21 @@ function initializeBlog() {
     document.head.appendChild(style);
 }
 
+let currentPage = 1;
+const ITEMS_PER_PAGE = 5;
+
 function showBlogList() {
     console.log('showBlogList called');
-    
-    // Restore the original blog page structure if it was replaced
+
     const mainContent = document.querySelector('.page-content');
     if (!mainContent) {
         console.error('Main content element not found');
         return;
     }
-    
-    // Check if we need to restore the blog page structure
+
+    // Restore the blog structure
     const blogPage = document.querySelector('.blog-page');
     if (!blogPage) {
-        // Restore the original structure
         mainContent.innerHTML = `
             <div class="blog-page">
                 <div class="blog-page-header">
@@ -97,145 +98,157 @@ function showBlogList() {
                     <p class="blog-page-subtitle">Tipy, triky a inspirace pro vaše trička a potisky</p>
                 </div>
 
-                <div class="blog-filters">
-                    <button class="filter-btn active" data-category="all">Všechny</button>
-                    <button class="filter-btn" data-category="tipy">Tipy</button>
-                    <button class="filter-btn" data-category="trendy">Trendy</button>
-                    <button class="filter-btn" data-category="pece">Péče</button>
-                    <button class="filter-btn" data-category="novinky">Novinky</button>
-                </div>
-
                 <div class="blog-list" id="blog-list">
                     <!-- Blog items will be dynamically generated -->
                 </div>
 
-                <div class="blog-pagination">
-                    <button class="pagination-btn prev" disabled>Předchozí</button>
-                    <div class="pagination-numbers">
-                        <button class="pagination-number active">1</button>
-                        <button class="pagination-number">2</button>
-                        <button class="pagination-number">3</button>
-                    </div>
-                    <button class="pagination-btn next">Další</button>
+                <div class="blog-pagination" id="blog-pagination">
                 </div>
             </div>
         `;
     }
-    
-    // Generate blog items dynamically
-    generateBlogItems();
-    
-    // Filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.getAttribute('data-category');
-            
-            // Update active filter button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // Filter blog items
-            const blogItems = document.querySelectorAll('.blog-item');
-            blogItems.forEach(item => {
-                const itemCategory = item.getAttribute('data-category');
-                
-                if (category === 'all' || itemCategory === category) {
-                    item.style.display = 'grid';
-                    item.style.animation = 'fadeIn 0.3s ease';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-    
-    // Pagination functionality
-    const paginationNumbers = document.querySelectorAll('.pagination-number');
-    const prevBtn = document.querySelector('.pagination-btn.prev');
-    const nextBtn = document.querySelector('.pagination-btn.next');
-    
-    let currentPage = 1;
-    const totalPages = paginationNumbers.length;
-    
-    paginationNumbers.forEach((number, index) => {
-        number.addEventListener('click', () => {
-            currentPage = index + 1;
-            updatePagination();
-        });
-    });
-    
+
+    renderCurrentPage();
+}
+
+function renderCurrentPage() {
+    generateBlogItems(currentPage);
+    renderPaginationControls();
+}
+
+function renderPaginationControls() {
+    const paginationContainer = document.getElementById('blog-pagination');
+    if (!paginationContainer) return;
+
+    if (typeof blogArticles === 'undefined' || blogArticles.length === 0) {
+        paginationContainer.innerHTML = '';
+        return;
+    }
+
+    const totalPages = Math.ceil(blogArticles.length / ITEMS_PER_PAGE);
+
+    // Hide pagination if there is 1 page or fewer
+    if (totalPages <= 1) {
+        paginationContainer.innerHTML = '';
+        return;
+    }
+
+    let html = '';
+    html += `<button class="pagination-btn prev" ${currentPage === 1 ? 'disabled' : ''}>Předchozí</button>`;
+    html += `<div class="pagination-numbers">`;
+    for (let i = 1; i <= totalPages; i++) {
+        html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+    }
+    html += `</div>`;
+    html += `<button class="pagination-btn next" ${currentPage === totalPages ? 'disabled' : ''}>Další</button>`;
+
+    paginationContainer.innerHTML = html;
+
+    const prevBtn = paginationContainer.querySelector('.prev');
+    const nextBtn = paginationContainer.querySelector('.next');
+    const numberBtns = paginationContainer.querySelectorAll('.pagination-number');
+
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             if (currentPage > 1) {
                 currentPage--;
-                updatePagination();
+                renderCurrentPage();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
     }
-    
+
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             if (currentPage < totalPages) {
                 currentPage++;
-                updatePagination();
+                renderCurrentPage();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
     }
-    
-    function updatePagination() {
-        // Update pagination numbers
-        paginationNumbers.forEach((number, index) => {
-            number.classList.toggle('active', index + 1 === currentPage);
+
+    numberBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            currentPage = parseInt(e.target.getAttribute('data-page'));
+            renderCurrentPage();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        
-        // Update prev/next buttons
-        if (prevBtn) prevBtn.disabled = currentPage === 1;
-        if (nextBtn) nextBtn.disabled = currentPage === totalPages;
-        
-        // Here you would typically load the appropriate page content
-        // For now, we'll just scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+function generateBlogItems(page = 1) {
+    const blogList = document.getElementById('blog-list');
+    if (!blogList) {
+        console.error('Blog list element not found');
+        return;
     }
+
+    if (typeof blogArticles === 'undefined' || !blogArticles.length) {
+        blogList.innerHTML = '<p>Články se načítají...</p>';
+        return;
+    }
+
+    const startIndex = (page - 1) * ITEMS_PER_PAGE;
+    const pageItems = blogArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    blogList.innerHTML = pageItems.map(article => `
+        <article class="blog-item ${article.featured ? 'featured' : ''}" data-category="${article.category}">
+            <div class="blog-item-image">
+                <img src="${article.image}" alt="${article.title}" />
+                ${article.featured ? '<div class="blog-item-badge">Doporučeno</div>' : ''}
+            </div>
+            <div class="blog-item-content">
+                <div class="blog-item-meta">
+                    <span class="blog-item-date">${article.date}</span>
+                    <span class="blog-item-category">${getCategoryName(article.category)}</span>
+                    <span class="blog-item-read-time">${article.readTime}</span>
+                </div>
+                <h2 class="blog-item-title">${article.title}</h2>
+                <p class="blog-item-excerpt">${article.subtitle}</p>
+                <div class="blog-item-tags">
+                    ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <a href="#${article.id}" class="blog-item-link">Číst více</a>
+            </div>
+        </article>
+    `).join('');
 }
 
 function showBlogDetail(blogId) {
-    // Check if blogArticles is available
     if (typeof blogArticles === 'undefined' || !blogArticles.length) {
         console.error('Blog articles not loaded yet');
         return;
     }
-    
-    // Find the blog post from the centralized data
+
     const blogPost = blogArticles.find(post => post.id === blogId);
-    
+
     if (!blogPost) {
         console.error('Blog post not found:', blogId);
-        // Blog post not found, redirect to blog list
         window.location.href = '/pages/blog.html';
         return;
     }
-    
-    // Update page title
+
     document.title = `${blogPost.title} - T-Shark`;
-    
-    // Replace the main content with blog detail
+
     const mainContent = document.querySelector('.page-content');
     if (!mainContent) {
         console.error('Main content element not found');
         return;
     }
-    
+
+    // Using blog-article-title-overlay to center vertically and horizontally using flex
     mainContent.innerHTML = `
         <article class="blog-article">
             <div class="blog-article-header">
                 <div class="blog-article-image">
                     <img src="${blogPost.image}" alt="${blogPost.title}" />
                     <button class="blog-article-back" onclick="goBackToList()">zpět</button>
+                    <div class="blog-article-title-overlay">
+                        <h1 class="blog-article-title">${blogPost.title}</h1>
+                        <p class="blog-article-subtitle">${blogPost.subtitle}</p>
+                    </div>
                 </div>
-                <h1 class="blog-article-title">${blogPost.title}</h1>
-                <p class="blog-article-subtitle">${blogPost.subtitle}</p>
             </div>
 
             <div class="blog-article-content">
@@ -279,42 +292,6 @@ function showBlogDetail(blogId) {
     `;
 }
 
-function generateBlogItems() {
-    const blogList = document.getElementById('blog-list');
-    if (!blogList) {
-        console.error('Blog list element not found');
-        return;
-    }
-    
-    if (typeof blogArticles === 'undefined' || !blogArticles.length) {
-        console.error('Blog articles not available');
-        blogList.innerHTML = '<p>Články se načítají...</p>';
-        return;
-    }
-    
-    blogList.innerHTML = blogArticles.map(article => `
-        <article class="blog-item ${article.featured ? 'featured' : ''}" data-category="${article.category}">
-            <div class="blog-item-image">
-                <img src="${article.image}" alt="${article.title}" />
-                ${article.featured ? '<div class="blog-item-badge">Doporučeno</div>' : ''}
-            </div>
-            <div class="blog-item-content">
-                <div class="blog-item-meta">
-                    <span class="blog-item-date">${article.date}</span>
-                    <span class="blog-item-category">${getCategoryName(article.category)}</span>
-                    <span class="blog-item-read-time">${article.readTime}</span>
-                </div>
-                <h2 class="blog-item-title">${article.title}</h2>
-                <p class="blog-item-excerpt">${article.subtitle}</p>
-                <div class="blog-item-tags">
-                    ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                </div>
-                <a href="#${article.id}" class="blog-item-link">Číst více</a>
-            </div>
-        </article>
-    `).join('');
-}
-
 function getCategoryName(category) {
     const categoryNames = {
         'tipy': 'Tipy',
@@ -325,9 +302,7 @@ function getCategoryName(category) {
     return categoryNames[category] || category;
 }
 
-// Function to go back to blog list
 function goBackToList() {
     console.log('goBackToList called');
-    // Navigate to blog.html without hash, which will reload the page
     window.location.href = window.location.pathname;
 }
